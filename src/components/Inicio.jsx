@@ -1,12 +1,13 @@
 import React from 'react';
+import Blog from './Blog';
 import './Inicio.css';
-
 
 export default function Inicio() {
   return (
     <div className="contenedor-pagina">
-      <h1>Sea bienvenido</h1>
-      
+      {/* SISTEMA DE POSTS DINÁMICOS / CMS BLOG */}
+      <Blog />
+
     </div>
   );
 }
