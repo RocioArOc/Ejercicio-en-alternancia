@@ -1,14 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Paleta de colores solicitada */
-  --bg-color: #0d0d0d; /* Negro casi puro para el fondo */
-  --text-color: #ffffff; /* Blanco para el texto general */
-  --mustard: #d4af37; /* Amarillo mostaza */
-  --mustard-light: #f3c332; 
-  --purple: #8a2be2; /* Morado para contraste */
-  
+  /* Variables base (Tema Oscuro por defecto) */
+  --bg-color: #0d0d0d;
+  --text-color: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --mustard: #d4af37;
+  --mustard-light: #f3c332;
+  --purple: #8a2be2;
+  --nav-bg: rgba(0, 0, 0, 0.85);
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --input-bg: rgba(0, 0, 0, 0.4);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --radial-glow-1: rgba(212, 175, 55, 0.05);
+  --radial-glow-2: rgba(138, 43, 226, 0.05);
+
   --font-main: 'Inter', sans-serif;
+}
+
+body.claro {
+  /* Sobrescritura para Tema Claro */
+  --bg-color: #f7f7f7;
+  --text-color: #1a1a1a;
+  --text-secondary: rgba(0, 0, 0, 0.65);
+  --mustard: #b28900; /* Mostaza ligeramente más oscuro para contrastar en fondo claro */
+  --mustard-light: #d4af37;
+  --purple: #7015c7; /* Morado más oscuro para accesibilidad */
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --input-bg: rgba(255, 255, 255, 0.95);
+  --input-border: rgba(0, 0, 0, 0.15);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --radial-glow-1: rgba(212, 175, 55, 0.1);
+  --radial-glow-2: rgba(138, 43, 226, 0.1);
 }
 
 * {
@@ -22,11 +49,15 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   background-image: 
-    radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.05), transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(138, 43, 226, 0.05), transparent 25%);
+    radial-gradient(circle at 15% 50%, var(--radial-glow-1), transparent 25%),
+    radial-gradient(circle at 85% 30%, var(--radial-glow-2), transparent 25%);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Transición suave global de fondo y texto para el cambio de tema */
+  transition: background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              color 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              background-image 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 #root {
@@ -61,18 +92,21 @@ button {
   margin-bottom: 1.5rem;
   font-size: 3rem;
   letter-spacing: -1px;
-  text-shadow: 2px 2px 4px rgba(138, 43, 226, 0.2); 
+  text-shadow: 2px 2px 4px var(--shadow-color);
+  transition: color 0.4s ease, text-shadow 0.4s ease;
 }
 
 .contenedor-pagina p {
   color: var(--text-color);
   font-size: 1.25rem;
   line-height: 1.6;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--card-bg);
   padding: 2rem;
   border-radius: 12px;
+  border: 1px solid var(--card-border);
   border-left: 4px solid var(--purple);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 @keyframes aparecer {
