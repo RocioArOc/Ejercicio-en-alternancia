@@ -1,0 +1,168 @@
+/* Contenedor del formulario con efecto Glassmorphism */
+.formulario-contacto {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 100%;
+  margin: 2rem auto 0 auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+/* Grupo de cada campo (etiqueta + input + error) */
+.grupo-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+/* Estilo para las etiquetas */
+.grupo-campo label {
+  color: var(--mustard-light);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+/* Estilo base para los inputs y el textarea */
+.grupo-campo input,
+.grupo-campo textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-family: inherit;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* Efecto de foco en inputs y textarea */
+.grupo-campo input:focus,
+.grupo-campo textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+/* Estado de campo inválido (Error) */
+.grupo-campo input.campo-invalido,
+.grupo-campo textarea.campo-invalido {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.25) !important;
+  background: rgba(239, 68, 68, 0.03);
+}
+
+/* Estado de campo válido (Éxito) */
+.grupo-campo input.campo-valido,
+.grupo-campo textarea.campo-valido {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.25) !important;
+  background: rgba(16, 185, 129, 0.03);
+}
+
+/* Mensajes de error en tiempo real con animación */
+.mensaje-error {
+  color: #f87171;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  animation: deslizarAbajo 0.25s ease-out forwards;
+}
+
+/* Botón de envío */
+.boton-enviar {
+  background: var(--purple);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+}
+
+.boton-enviar:hover:not(:disabled) {
+  background: #9b42f5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 43, 226, 0.6);
+}
+
+.boton-enviar:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.boton-enviar:disabled {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Banner de éxito al enviar el formulario */
+.mensaje-exito {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  animation: aparecerExito 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mensaje-exito h3 {
+  color: #10b981;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.mensaje-exito p {
+  color: rgba(255, 255, 255, 0.8);
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  font-size: 1rem;
+}
+
+/* Animaciones */
+@keyframes deslizarAbajo {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aparecerExito {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
