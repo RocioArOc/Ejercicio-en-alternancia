@@ -1,0 +1,62 @@
+/* Estilos para el menú de navegación */
+.barra-navegacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Borde sutil mostaza */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.enlaces-navegacion {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+.enlace {
+  color: #ffffff; /* Texto en blanco */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.enlace:hover {
+  color: var(--mustard-light); /* Amarillo mostaza al pasar el ratón */
+}
+
+/* Efecto de subrayado al pasar el ratón */
+.enlace::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--purple); /* Subrayado morado de contraste */
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.enlace:hover::after {
+  width: 100%;
+}
+
+/* Estilo para la pestaña activa */
+.enlace.activo {
+  color: var(--mustard); /* Amarillo mostaza cuando está activa */
+}
+
+.enlace.activo::after {
+  width: 100%;
+  background-color: var(--mustard); /* El subrayado activo es mostaza */
+}
