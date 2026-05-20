@@ -1,18 +1,19 @@
 /* Contenedor del formulario con efecto Glassmorphism */
 .formulario-contacto {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--card-bg);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
   border-radius: 16px;
   padding: 2.5rem;
   max-width: 500px;
   width: 100%;
   margin: 2rem auto 0 auto;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 20px 40px var(--shadow-color);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   text-align: left;
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* Grupo de cada campo (etiqueta + input + error) */
@@ -39,12 +40,12 @@
   width: 100%;
   padding: 0.85rem 1rem;
   font-size: 1rem;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  background: var(--input-bg);
+  border: 1.5px solid var(--input-border);
   border-radius: 8px;
   color: var(--text-color);
   font-family: inherit;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   outline: none;
 }
 
@@ -109,8 +110,9 @@
 }
 
 .boton-enviar:disabled {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.3);
+  background: var(--card-border);
+  color: var(--text-secondary);
+  opacity: 0.5;
   cursor: not-allowed;
   box-shadow: none;
 }
@@ -123,7 +125,7 @@
   padding: 1.5rem;
   margin-top: 2rem;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px var(--shadow-color);
   animation: aparecerExito 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -134,7 +136,7 @@
 }
 
 .mensaje-exito p {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-color);
   background: none;
   border: none;
   box-shadow: none;
