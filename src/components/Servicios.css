@@ -1,0 +1,157 @@
+/* Contenedor principal de la galería de servicios */
+.galeria-contenedor {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 750px;
+  width: 100%;
+  margin: 2rem auto 0 auto;
+}
+
+/* Área del Visor de la Imagen Principal */
+.visor-principal {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor de la imagen para asegurar una proporción consistente */
+.imagen-principal-wrapper {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: #000;
+  position: relative;
+}
+
+/* Imagen principal grande */
+.imagen-principal {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Animación suave de desvanecimiento cada vez que cambia (se monta el nodo con nueva key) */
+  animation: desvanecerEntrada 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Detalles del servicio  */
+.info-servicio {
+  padding: 2rem;
+  text-align: left;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.95) 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+
+}
+
+.info-servicio h2 {
+  color: var(--mustard);
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+}
+
+.info-servicio p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Carrusel de imágenes miniatura*/
+.contenedor-miniaturas {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+}
+
+/* Botón contenedor de la miniatura para accesibilidad y usabilidad */
+.miniatura-boton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Imagen miniatura individual */
+.miniatura-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.5;
+  filter: grayscale(80%);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Efecto hover en las miniaturas */
+.miniatura-boton:hover {
+  transform: translateY(-4px);
+}
+
+.miniatura-boton:hover .miniatura-img {
+  opacity: 0.9;
+  filter: grayscale(20%);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+
+.miniatura-boton.activa {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.miniatura-boton.activa .miniatura-img {
+  opacity: 1;
+  filter: grayscale(0%);
+  border-color: var(--mustard);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+}
+
+/* Animaciones */
+@keyframes desvanecerEntrada {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Adaptabilidad móvil (Responsiveness) */
+@media (max-width: 600px) {
+  .imagen-principal-wrapper {
+    height: 250px;
+  }
+
+  .info-servicio h2 {
+    font-size: 1.4rem;
+  }
+
+  .info-servicio p {
+    font-size: 0.95rem;
+  }
+
+  .miniatura-img {
+    width: 70px;
+    height: 70px;
+  }
+}
